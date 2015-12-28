@@ -18,5 +18,12 @@ namespace goFish
 			Suit = suit;
 			Value = value;
 		}
+
+		public static string Plural(Values value) {
+			if (value == Values.Six)
+				return "Sixes";
+			else
+				return value.ToString() + "s";
+		}
 	}
 }
