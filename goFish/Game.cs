@@ -74,11 +74,43 @@ namespace goFish
 		}
 
 		public string DescribeBooks() {
-			return "";
+			string whoHasWhichBooks = "";
+			foreach(Values value in books.Keys) {
+				whoHasWhichBooks += books[value].Name + " has a book of " + Card.Plural(value) + Environment.NewLine;
+			}
+			return whoHasWhichBooks;
 		}
 
 		public string GetWinnerName() {
-			return "";
+			Dictionary<string, int> winners = new Dictionary<string, int>();
+			foreach(Values value in books.Keys) {
+				string name = books[value].Name;
+				if (winners.ContainsKey(name))
+					winners[name]++;
+				else
+					winners.Add(name, 1);
+			}
+			int mostBooks = 0;
+			foreach(string name in winners.Keys) {
+				if (winners[name] > mostBooks)
+					mostBooks = winners[name];
+			}
+			bool tie = false;
+			string winnerList = "";
+			foreach(string name in winners.Keys) {
+				if(winners[name]==mostBooks) {
+					if (!String.IsNullOrEmpty(winnerList)) {
+						winnerList += " and ";
+						tie = true;
+					}
+					winnerList += name;
+				}
+			}
+			winnerList += " with " + mostBooks + " books";
+			if (tie)
+				return "A tie between " + winnerList;
+			else
+				return winnerList;
 		}
 
 		public IEnumerable<string> GetPlayerCardNames() {
