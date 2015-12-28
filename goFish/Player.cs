@@ -16,7 +16,11 @@ namespace goFish
 		private TextBox textBoxOnForm;
 
 		public Player(String name, Random random, TextBox textBoxOnForm) {
-			
+			this.name = name;
+			this.random = random;
+			this.textBoxOnForm = textBoxOnForm;
+			cards = new Deck();     //this will give the player the full deck of cards, is that what you wanted to do?
+			textBoxOnForm.Text += name + " has just joined the game." + Environment.NewLine;
 		}
 
 		public IEnumerable<Values> PullOutBooks() {
@@ -38,7 +42,9 @@ namespace goFish
 		}
 
 		public Values GetRandomValue() {
-
+			int randomValue;
+			randomValue = random.Next(cards.Count);
+			return (Values)randomValue;
 		}
 
 		public Deck DoYouHaveAny(Values value) {
@@ -48,7 +54,7 @@ namespace goFish
 		public void AskForACard(List<Player> players, int myIndex, Deck stock) {
 
 		}
-		public void AskforACard(List<Player> players, int myIndex, Deck stock, Values value) {
+		public void AskForACard(List<Player> players, int myIndex, Deck stock, Values value) {
 
 		}
 

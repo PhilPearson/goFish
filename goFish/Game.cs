@@ -28,14 +28,48 @@ namespace goFish
 		}
 
 		private void Deal() {
+			stock.Shuffle();
+			for(int i = 0; i < 5; i++) {
+				foreach (Player player in players)
+					player.TakeCard(stock.Deal());
+			}
+			foreach(Player player in players) {
+				PullOutBooks(player);
+			}
 
 		}
 
 		public bool PlayOneRound(int selectedPlayerCard) {
+			Values cardToAskFor = players[0].Peek(selectedPlayerCard).Value;
+			for(int i = 0; i < players.Count; i++) {
+				if (i == 0)
+					players[0].AskForACard(players, 0, stock, cardToAskFor);
+				else
+					players[i].AskForACard(players, i, stock);
+
+				if (PullOutBooks(players[i])) {
+					textBoxOnForm.Text += players[i].Name + " drew a new hand" + Environment.NewLine;
+					int card = 1;
+					while (card<=5 && stock.Count > 0) {
+						players[i].TakeCard(stock.Deal());
+						card++;
+					}
+				}
+				players[0].SortHand();
+				if (stock.Count == 0) {
+					textBoxOnForm.Text = "The stock is out of cards. Game over!" + Environment.NewLine;
+					return true;
+				}
+			}
 			return false;
 		}
 
 		public bool PullOutBooks(Player player) {
+			IEnumerable<Values> booksPulled = player.PullOutBooks();
+			foreach (Values value in booksPulled)
+				books.Add(value, player);
+			if (player.CardCount == 0)
+				return true;
 			return false;
 		}
 
