@@ -33,9 +33,14 @@ namespace goFish
 						HowMany++;
 				}
 				if (HowMany == 4) {
-					books.Add(value);
-					for (int card = cards.Count - 1; card >= 0; card--)
-						cards.Deal(card);
+					books.Add(value);		//adds the book so its returned
+
+					//the following loop removes all cards from players deck?
+					//it should only be removing cards that are equal to value.
+					for (int card = cards.Count - 1; card >= 0; card--) {
+						if (cards.Peek(card).Value == value)
+							cards.Deal(card);
+					}	
 				}
 			}
 			return books;

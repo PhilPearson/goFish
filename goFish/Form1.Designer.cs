@@ -33,7 +33,7 @@
 			this.textBooks = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.buttonAsk = new System.Windows.Forms.Button();
-			this.listHand = new System.Windows.Forms.ListBox();
+			this.listHand1 = new System.Windows.Forms.ListBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
@@ -110,13 +110,13 @@
 			this.buttonAsk.UseVisualStyleBackColor = true;
 			this.buttonAsk.Click += new System.EventHandler(this.buttonAsk_Click);
 			// 
-			// listHand
+			// listHand1
 			// 
-			this.listHand.FormattingEnabled = true;
-			this.listHand.Location = new System.Drawing.Point(365, 30);
-			this.listHand.Name = "listHand";
-			this.listHand.Size = new System.Drawing.Size(187, 459);
-			this.listHand.TabIndex = 8;
+			this.listHand1.FormattingEnabled = true;
+			this.listHand1.Location = new System.Drawing.Point(365, 30);
+			this.listHand1.Name = "listHand1";
+			this.listHand1.Size = new System.Drawing.Size(187, 459);
+			this.listHand1.TabIndex = 8;
 			// 
 			// label4
 			// 
@@ -131,9 +131,9 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(564, 540);
+			this.ClientSize = new System.Drawing.Size(566, 540);
 			this.Controls.Add(this.label4);
-			this.Controls.Add(this.listHand);
+			this.Controls.Add(this.listHand1);
 			this.Controls.Add(this.buttonAsk);
 			this.Controls.Add(this.textBooks);
 			this.Controls.Add(this.label3);
@@ -162,7 +162,7 @@
 		private System.Windows.Forms.TextBox textBooks;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button buttonAsk;
-		private System.Windows.Forms.ListBox listHand;
+		private System.Windows.Forms.ListBox listHand1;
 		private System.Windows.Forms.Label label4;
 	}
 }

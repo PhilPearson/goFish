@@ -31,9 +31,17 @@ namespace goFish
 		}
 
 		private void UpdateForm() {
-			listHand.Items.Clear();
-			foreach (String cardName in game.GetPlayerCardNames())
-				listHand.Items.Add(cardName);
+			listHand1.Items.Clear();
+			foreach (String cardName in game.GetPlayerCardNames(0))
+				listHand1.Items.Add(cardName);
+			/*
+			listHand2.Items.Clear();
+			foreach (String cardName in game.GetPlayerCardNames(1))
+				listHand2.Items.Add(cardName);
+			listHand3.Items.Clear();
+			foreach (String cardName in game.GetPlayerCardNames(2))
+				listHand3.Items.Add(cardName);
+			*/
 			textBooks.Text = game.DescribeBooks();
 			textProgress.Text += game.DescribePlayerHands();
 			textProgress.SelectionStart = textProgress.Text.Length;
@@ -42,11 +50,11 @@ namespace goFish
 
 		private void buttonAsk_Click(object sender, EventArgs e) {
 			textProgress.Text = "";
-			if (listHand.SelectedIndex < 0) {
+			if (listHand1.SelectedIndex < 0) {
 				MessageBox.Show("Please select a card");
 				return;
 			}
-			if (game.PlayOneRound(listHand.SelectedIndex)) {
+			if (game.PlayOneRound(listHand1.SelectedIndex)) {
 				textProgress.Text += "The winner is... " + game.GetWinnerName();
 				textBooks.Text = game.DescribeBooks();
 				buttonAsk.Enabled = false;

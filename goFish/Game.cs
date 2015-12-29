@@ -25,6 +25,8 @@ namespace goFish
 			stock = new Deck();
 			Deal();
 			players[0].SortHand();
+			players[1].SortHand();
+			players[2].SortHand();
 		}
 
 		private void Deal() {
@@ -55,7 +57,7 @@ namespace goFish
 						card++;
 					}
 				}
-				players[0].SortHand();
+				players[i].SortHand();
 				if (stock.Count == 0) {
 					textBoxOnForm.Text = "The stock is out of cards. Game over!" + Environment.NewLine;
 					return true;
@@ -113,8 +115,8 @@ namespace goFish
 				return winnerList;
 		}
 
-		public IEnumerable<string> GetPlayerCardNames() {
-			return players[0].GetCardNames();
+		public IEnumerable<string> GetPlayerCardNames(int player) {
+			return players[player].GetCardNames();
 		}
 
 		public string DescribePlayerHands() {
